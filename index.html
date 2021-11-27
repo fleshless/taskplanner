@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Task Planner</title>
+	<title>repl.it</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@
     <input class="form-control" placeholder="Due date time - eg: 13:32" id="time"></input>
     <br>
     <button class="btn btn-warning" id="Submit">Submit</button>
-    <button class="btn btn-warning" id="existingAssignments">Existing Assignments</button>
+    <button class="btn btn-warning" id="existingAssignments">Back</button>
     <select name='templates' id='templates'>
       <option value="defaultOption">Select a template to use</option>
     </select>
@@ -35,7 +35,7 @@
     </div>
     <div class = "overlayDiv" id="templateDiv">
       <br>
-      <h1>Adding A New Template</h1>
+      <h1>Add A New Template</h1>
       <div id='inputBoxes'>
         <input id='templateName' placeholder='Name your template'></input>
         <br>
@@ -44,9 +44,36 @@
         <button class="btn btn-warning btn-sm" id='removeStep'>-Remove step</button>
         <button class="btn btn-warning btn-sm" id='submitTemplate'>Submit</button>
       </div>
-      <h1>Existing Templates</h1>
+      <h1>Your Templates</h1>
       <h5 id="existingTemplates"></h5>
       <button class="btn btn-warning" id="backButton">Back</button>
+    </div>
+    <div class="overlayDiv" id="step1">
+      <p id="tutorial">No assignments yet. Click the button above to create one.</p>
+    </div>
+    <div class="overlayDiv" id="step6">
+      <p id="tutorial">Templates are a checklist of steps to help you complete your assignment. Use the form to create one, and it will show up below "Your Templates."</p>
+    </div>
+    <div class="overlayDiv" id="step2">
+      <p id="tutorial">When you create an assignment, it will show up in "Existing Assignments" tab. Fill out the form above to make one (don't worry about the drop-down menu yet).</p>
+    </div>
+    <div class="overlayDiv" id="step3">
+      <p id="tutorial">All the assignments you make will show up here. Do you see that bar under the assignment? That's the progress bar. It will show you how much time has passed from the time you create your assignment to the time when it is due. Every assignment has one.</p>
+      <button class="btn btn-warning" id="toStep4">Next</button>
+    </div>
+    <div class="overlayDiv" id="step4">
+      <p id="tutorial">Pressing the Done button will mark the assignment as completed and remove it from this page.</p>
+      <button class="btn btn-warning" id="toStep5">Next</button>
+    </div>
+    <div class="overlayDiv" id="step5">
+      <p id="tutorial">Next, let's create a template. Click on the button that says "+Add template".</p>
+    </div>
+    <div class="overlayDiv" id="step7">
+      <p id="tutorial">Great! Now you can select the template in the drop-down menu on the assignments page. To see how an assignment will look with a template, create another assignment with your template.</p>
+    </div>
+    <div class="overlayDiv" id="step8">
+      <p id="tutorial">And that's about it. I hope Homework App proves to be useful for you!</p>
+      <button class="btn btn-warning" id="finishTutorial">Done!</button>
     </div>
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
