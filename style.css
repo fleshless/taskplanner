@@ -3,10 +3,9 @@ body {
 }
 
 #assignmentsDiv {
-  margin-top: 50px;
-  margin-bottom: 100px;
+  margin-top: 5%;
   margin-right: 150px;
-  margin-left: 150px;
+  margin-left: 10%;
 }
 
 #templateDiv {
@@ -21,7 +20,7 @@ p {
 }
 
 #assignmentsCreationDiv {
-  margin-top: 50px;
+  margin-top: 5%;
   margin-left: 120px;
   margin-right: 200px;
 }
@@ -33,4 +32,64 @@ h1 {
 
 h5 {
   text-shadow: -1.5px -1.5px 0 #000, 1.5px -1.5px 0 #000, -1.5px 1.5px 0 #000, 1.5px 1.5px 0 #000;
+}
+
+#arrow {
+  margin-left: 13%;
+}
+
+#arrow2 {
+  margin-left: 30%;
+}
+
+#step1 {
+  margin-left: 10%;
+  width: 160px;
+}
+
+#step2 {
+  margin-left: 30%;
+  width: 300px;
+}
+
+#step3 {
+  padding-left: 10%;
+  padding-right:27%;
+}
+
+#step4 {
+  padding-left: 10%;
+  padding-right:43%;
+}
+
+#step5 {
+  margin-left: 20.5%;
+  width: 160px;
+}
+
+#step6 {
+  position: absolute;
+  top: 21%;
+  margin-left: 35%;
+  width: 260px;
+}
+
+#step7 {
+  position: absolute;
+  top: 21%;
+  margin-left: 35%;
+  width: 260px;
+}
+
+#step8 {
+  position: absolute;
+  border-top: 60%;
+  margin-left: 20.5%;
+  width: 160px;
+}
+
+#tutorial {
+  color: white;
+  outline: black solid 3px;
+  padding: 4px;
 }
