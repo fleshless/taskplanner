@@ -1,3 +1,4 @@
+// Make assignment tutorial go away after creating an assignment
 var templateDiv = document.getElementById("templateDiv")
 var assignmentsCreationDiv = document.getElementById("assignmentsCreationDiv")
 var submitButton = document.getElementById("Submit")
@@ -9,6 +10,9 @@ var dueTime = document.getElementById("time")
 var assignmentsDiv = document.getElementById("assignmentsDiv")
 var selectTemplate = document.getElementById("templates")
 var existingTemplates = document.getElementById("existingTemplates")
+var step1 = document.getElementById("step1")
+var step6 = document.getElementById("step6")
+var audio = new Audio('alarm.mp3');
 var assignments = []
 var templates = []
 var selectTemplateValue = ""
@@ -119,6 +123,16 @@ dateToday = function () {
 submitButton.onclick = function () {
   assignmentsCreationDiv.style.display = "none";
   assignmentsDiv.style.display = "block";
+  step2.style.display = "none";
+  if (firstTimeAssignments == true) {
+    step3.style.display = "block";
+    firstTimeAssignments = false;
+  }
+  else if (secondTimeAssignments == true) {
+    step8.style.display = "block";
+    step7.style.display = "none";
+    secondTimeAssignments = false;
+  }
   var dueTimeValue = dueTime.value + ":00"
   if (selectTemplate.value != "Select a template to use") {
     assignments.push([input.value, dateToday(), dueDate.value, timeToday(), dueTimeValue, selectTemplate.value])
@@ -219,16 +233,31 @@ var saveTemplate = function () {
   serialize1DArrays(templateSteps, document.getElementById("templateName").value)
   templates.push(document.getElementById("templateName").value)
   serialize1DArrays(templates, "templates")
-  showTemplates()
+  showTemplates();
+  if (firstTime == true) {
+    step7.style.display = "block";
+    step6.style.display = "none";
+    secondTimeAssignments = true;
+  }
 }
 
 var showTemplates = function() {
   assignmentsDiv.style.display = "none";
   templateDiv.style.display = "block";
+  step1.style.display = "none";
+  step4.style.display = "none";
+  step5.style.display = "none";
+  step7.style.display = "none";
+  if(firstTime == true) {
+    step6.style.display = "block";
+  }
+  else {
+    step6.style.display = "none";
+  }
   var inputBoxesIds = ["template.1"]
   var modifiedTemplates = []
   for (var i = 0; i < templates.length; i++) {
-    var existingTemplate = '<p>'+templates[i]+"</p><button class='deleteTemplate btn btn-warning' id=delete."+i+">-Remove template</button>"
+    var existingTemplate = '<p>- '+templates[i]+"</p><button class='deleteTemplate btn btn-warning' id=delete."+i+">-Remove template</button>"
     modifiedTemplates.push(existingTemplate)
   }
   existingTemplates.innerHTML = modifiedTemplates.join('<br>')
@@ -255,6 +284,8 @@ document.getElementById('addTemplate').onclick = function () {
 
 document.getElementById('backButton').onclick = function () {
   templateDiv.style.display = "none";
+  step7.style.display = "none";
+  step6.style.display = "none";
   assignmentsDiv.style.display = "block";
   showList()
 }
@@ -311,8 +342,13 @@ var something = function (progressBarId) {
   if (Math.round(progressBar.value) == progressBar.max - 60) {
     alert("You have one minute remaining to submit assignment " + assignments[assignmentNumber][0])
   }
-  if (Math.round(progressBar.value) == progressBar.max) {
-    alert("The deadline to submit assignment " + assignments[assignmentNumber][0] + " has been reached. Better turn it in fast!")
+  if (Math.round(progressBar.value) >= progressBar.max) {
+    window.setTimeout(function() {
+      alert("The deadline to submit assignment " + assignments[assignmentNumber][0] + " has been reached. Better turn it in fast!")
+      audio.pause()
+    }, 100)
+    audio.play()
+
   }
   if (progressBar.value < progressBar.max) {
     window.setTimeout(function () {
@@ -350,21 +386,79 @@ document.getElementById("addAssignment").onclick = function () {
   templateDiv.style.display = "none";
   assignmentsDiv.style.display = "none";
   assignmentsCreationDiv.style.display = "block";
+  step1.style.display = "none";
+  step6.style.display = "none";
+  if(firstTimeAssignments == true) {
+    step2.style.display = "block";
+  }
+  else {
+    step2.style.display = "none";
+
+  }
 }
 
 document.getElementById("existingAssignments").onclick = function () {
   templateDiv.style.display = "none";
   assignmentsDiv.style.display = "block";
   assignmentsCreationDiv.style.display = "none";
+  step2.style.display = "none";
+  step1.style.display = "none";
+  step4.style.display = "none;"
+  step5.style.display = "none";
+}
+
+document.getElementById("toStep4").onclick = function() {
+  step3.style.display = "none";
+  step4.style.display = "block";
+}
+
+document.getElementById("toStep5").onclick = function() {
+  step4.style.display = "none";
+  step5.style.display = "block";
+}
+
+
+document.getElementById("finishTutorial").onclick = function() {
+  step6.style.display = "none";
+  step2.style.display = "none";
+  step3.style.display = "none";
+  step4.style.display = "none";
+  step5.style.display = "none";
+  step7.style.display = "none";
+  step8.style.display = "none";
+  step1.style.display = "none";
+  firstTime = false;
+  localStorage.setItem("first_time", "false")
 }
 
 templateDiv.style.display = "none";
 assignmentsDiv.style.display = "block";
 assignmentsCreationDiv.style.display = "none";
+step6.style.display = "none";
+step2.style.display = "none";
+step3.style.display = "none";
+step4.style.display = "none";
+step5.style.display = "none";
+step7.style.display = "none";
+step8.style.display = "none";
 assignments = deserialize2DArrays("assignments");
 templates = deserialize1DArrays("templates");
 checkboxStatuses = deserialize2DArrays("checkboxStatuses")
 var startingLength = templates.length
+
+var firstTime = localStorage.getItem("first_time");
+var firstTimeAssignments = false;
+var firstTimeTemplates = false;
+var secondTimeAssignments = false;
+if(firstTime == null) {
+  firstTime = true;
+  firstTimeTemplates = true;
+  firstTimeAssignments = true;
+  step1.style.display = "block";
+}
+else {
+  step1.style.display = "none";
+}
 showList();
 if (checkboxStatuses.length != 0) {
   window.setTimeout(function () {
