@@ -83,10 +83,6 @@ var showList = function () {
     }
   }
   text.innerHTML = visualLookOfTheAssignments.join("<br>")
-  if (checkboxStatuses.length != 0) {
-    window.setTimeout(function () {
-    checkStatusesOfCheckboxes()
-  }, 1000)
   var buttons = document.getElementsByClassName("buttonDone")
   for (var i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", function (event) {
@@ -104,6 +100,10 @@ var showList = function () {
   for (var i = 0; i < progressBarIds.length; i++) {
     loadProgressBar(progressBarIds[i], timeBeforeDueDate(assignments[i][1], assignments[i][3], assignments[i][2], assignments[i][4]))
   }
+  if (checkboxStatuses.length != 0) {
+    window.setTimeout(function () {
+    checkStatusesOfCheckboxes()
+  }, 1000)
 }
 
 timeToday = function () {
