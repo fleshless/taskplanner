@@ -102,8 +102,9 @@ var showList = function () {
   }
   if (checkboxStatuses.length != 0) {
     window.setTimeout(function () {
-    checkStatusesOfCheckboxes()
-  }, 1000)
+      checkStatusesOfCheckboxes()
+    }, 1000)
+  }
 }
 
 timeToday = function () {
