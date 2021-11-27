@@ -1,4 +1,3 @@
-// Make assignment tutorial go away after creating an assignment
 var templateDiv = document.getElementById("templateDiv")
 var assignmentsCreationDiv = document.getElementById("assignmentsCreationDiv")
 var submitButton = document.getElementById("Submit")
