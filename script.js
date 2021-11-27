@@ -83,6 +83,10 @@ var showList = function () {
     }
   }
   text.innerHTML = visualLookOfTheAssignments.join("<br>")
+  if (checkboxStatuses.length != 0) {
+    window.setTimeout(function () {
+    checkStatusesOfCheckboxes()
+  }, 1000)
   var buttons = document.getElementsByClassName("buttonDone")
   for (var i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", function (event) {
